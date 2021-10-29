@@ -6,7 +6,7 @@ Feature:
     And Ekranin ustundeki Search alanina samsung yazip Ara butonuna tiklayacak
     Then Sol menuden Telefon sonrasinda Cep Telefonu tiklayacak
     And Gelen sayfada samsung icin sonuc bulundugunu onaylayacak
-    And yirmialtinci siradaki urunun uzerine gelecek
+    And Yirmialtinci siradaki urunun uzerine gelecek
     Then  Urun detayinda Begen butonuna tiklayacak
     And Ekranin en ustundeki hesabim alaninda Begendiklerim tiklayacak
     And  Acilan sayfada bir onceki sayfada begendiklerime alinmis urunun bulundugunu onaylayacak
@@ -15,3 +15,4 @@ Feature:
     And Sepetim sayfasina gidecek
     Then Sepete eklenen bu urunun icine girilip kaldir butonuna basilacak, sepetimden cikarilacak
     And Bu urunun artik sepette olmadigini onaylayacak
+    And Site kapanacak
