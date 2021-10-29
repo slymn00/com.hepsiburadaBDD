@@ -10,7 +10,7 @@ public class ConfigurationReader {
     private static Properties properties;
 
     static {
-        String path="src/configuration.properties";
+        String path="configuration.properties";
 
         try {
             FileInputStream fileInputStream=new FileInputStream(path);
