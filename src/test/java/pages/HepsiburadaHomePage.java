@@ -70,4 +70,19 @@ public class HepsiburadaHomePage {
     @FindBy(xpath = "//span[text()='Ürün sepetinizden silinmiştir']")
     public WebElement urununSilindiginiDogrulama;
 
+    @FindBy(xpath = "//a[@class='sf-Header-26esO']")
+    public WebElement sepetBolumundekiHepsiburadaLogosu;
+
+    @FindBy(xpath = "//a[@class='solution-center-phone']")
+    public WebElement cagriMerkeziNo;
+
+    @FindBy(xpath = "//span[text()='Başa dön']")
+    public WebElement basaDonYazisi;
+
+    @FindBy(xpath = "//a[@class='sf-OldHeader-1NFKi']")
+    public WebElement anasayfadakiHepsiburadaLogosu;
+
+    @FindBy(xpath = "//a[text()='Çıkış Yap']")
+    public WebElement cikisYapButonu;
+
 }

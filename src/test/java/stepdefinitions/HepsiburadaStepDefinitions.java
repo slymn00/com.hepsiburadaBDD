@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -82,7 +83,7 @@ public class HepsiburadaStepDefinitions {
 
     }
 
-    @And("Ekranin en ustundeki hesabim alaninda Begendiklerim tiklayacak")
+    @And("Ekranin en ustundeki hesabim alaninda Begendiklerime tiklayacak")
     public void ekranin_en_ustundeki_hesabim_alaninda_begendiklerim_tiklayacak() {
         Actions actions=new Actions(Driver.getDriver());
         actions.sendKeys(Keys.HOME).perform();
@@ -145,9 +146,60 @@ public class HepsiburadaStepDefinitions {
         System.out.println(urununsilindiginidogrulama);
         Assert.assertTrue(urununsilindiginidogrulama.contains("silin"));
     }
+    @And("Sol ust kosedeki logo ile anasayfaya gecis yapilacak")
+    public void sol_ust_kosedeki_logo_ile_anasayfaya_gecis_yapilacak() {
+        ReusableMethods.waitFor(2);
+        hepsiburadaHomePage.sepetBolumundekiHepsiburadaLogosu.click();
+        ReusableMethods.waitFor(2);
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),ConfigurationReader.getProperty("hepsiburada_url"));
+
+    }
+    @Then("Sayfanin sonuna dogru inip cagri merkezi numarasini kontrol edecek")
+    public void sayfanin_sonuna_dogru_inip_cagri_merkezi_numarasini_kontrol_edecek() {
+        ReusableMethods.waitFor(2);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.END)
+                .sendKeys(Keys.PAGE_UP)
+                .perform();
+        Assert.assertEquals(hepsiburadaHomePage.cagriMerkeziNo.getText(),ConfigurationReader.getProperty("cagrimerkezi_No"));
+
+
+    }
+    @Then("Sag alt kisimdaki Basa don yazisi ile sayfanin basina donecek")
+    public void sag_alt_kisimdaki_basa_don_yazisi_ile_sayfanin_basina_donecek() {
+        ReusableMethods.waitFor(2);
+        hepsiburadaHomePage.basaDonYazisi.click();
+
+    }
+
+    @And("Sayfanin basina gelip Hepsiburada logosunun gorundugunu kontrol edecek")
+    public void sayfanin_basina_gelip_hepsiburada_logosunun_gorundugunu_kontrol_edecek() {
+        ReusableMethods.waitFor(2);
+        Assert.assertTrue(hepsiburadaHomePage.anasayfadakiHepsiburadaLogosu.isDisplayed());
+
+    }
+    @Then("Ekranin en ustundeki hesabim alanina gelecek cikis yapa tiklayacak")
+    public void ekranin_en_ustundeki_hesabim_alanina_gelecek_cikis_yap_a_tiklayacak() {
+        ReusableMethods.waitFor(2);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.moveToElement(hepsiburadaHomePage.hesabim).perform();
+        ReusableMethods.waitFor(1);
+        actions.click(hepsiburadaHomePage.cikisYapButonu).perform();
+    }
+    @Then("Cikis yaptigini kontrol edecek")
+    public void cikis_yaptigini_kontrol_edecek() {
+        ReusableMethods.waitFor(2);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.moveToElement(hepsiburadaHomePage.girisYap).perform();
+        ReusableMethods.waitFor(1);
+        Assert.assertTrue(hepsiburadaHomePage.login.isDisplayed());
+    }
 
     @And("Site kapanacak")
     public void site_kapanacak() {
         Driver.closeDriver();
     }
+
+
+
 }
